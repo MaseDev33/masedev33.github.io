@@ -344,10 +344,18 @@ main {
     box-shadow: 0 12px 24px rgba(0, 212, 255, 0.1);
 }
 
-.skill-card h3 {
-    color: var(--primary-color);
-    margin-bottom: 0.75rem;
-    font-size: 1.1rem;
+.skill-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.skill-badge {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    display: inline-block;
 }
 
 .skill-card p {
@@ -423,25 +431,32 @@ main {
 .project-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     gap: 1rem;
     margin-bottom: 1rem;
+    flex-wrap: wrap;
 }
 
 .project-card h3 {
     color: var(--text-primary);
     font-size: 1.25rem;
     flex: 1;
+    min-width: 220px;
 }
 
-.tech-tag {
-    background-color: var(--accent-purple);
-    color: var(--text-primary);
-    padding: 0.25rem 0.75rem;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    white-space: nowrap;
+.tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.tech-badge {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    display: inline-block;
 }
 
 .project-description {
