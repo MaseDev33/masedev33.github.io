@@ -58,7 +58,7 @@ a:hover {
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem 2rem;
+    padding: 0.85rem 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -68,7 +68,7 @@ a:hover {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--text-primary);
-    display: flex;
+    display: inline-flex;
     align-items: center;
 }
 
@@ -79,7 +79,13 @@ a:hover {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
 }
 
 .nav-links a,
@@ -87,7 +93,13 @@ a:hover {
     color: var(--text-secondary);
     font-weight: 500;
     position: relative;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1rem;
+    border-radius: 0.75rem;
+    white-space: nowrap;
 }
 
 .nav-links a:hover,
@@ -95,6 +107,7 @@ a:hover {
 .nav-dropdown .dropdown-toggle:hover,
 .nav-dropdown .dropdown-checkbox:checked + .dropdown-toggle {
     color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.08);
 }
 
 .nav-links a.active::after {
@@ -148,8 +161,7 @@ a:hover {
     z-index: 1100;
 }
 
-.nav-dropdown .dropdown-checkbox:checked + .dropdown-toggle + .dropdown-menu,
-.nav-dropdown:hover .dropdown-menu {
+.nav-dropdown .dropdown-checkbox:checked + .dropdown-toggle + .dropdown-menu {
     display: block;
 }
 
@@ -165,6 +177,149 @@ a:hover {
     margin-top: 0.75rem;
     color: var(--text-secondary);
     font-size: 0.9rem;
+}
+
+.mobile-menu-checkbox {
+    display: none;
+}
+
+.nav-menu-toggle {
+    display: none;
+    background-color: rgba(255, 255, 255, 0.06);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.nav-menu-toggle:hover {
+    background-color: rgba(0, 212, 255, 0.12);
+    border-color: rgba(0, 212, 255, 0.25);
+}
+
+.nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+    gap: 1rem;
+}
+
+@media (max-width: 860px) {
+    .nav-container {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.75rem;
+        position: relative;
+    }
+
+    .nav-header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .nav-menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        min-width: 110px;
+        gap: 0.5rem;
+        padding: 0.85rem 1rem;
+        font-size: 1rem;
+        border-radius: 999px;
+    }
+
+    .nav-logo {
+        order: 2;
+        justify-content: flex-end;
+    }
+
+    .nav-logo a {
+        padding: 0.75rem 0;
+        font-size: 1.1rem;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        gap: 0.5rem;
+        background-color: rgba(26, 31, 46, 0.98);
+        padding: 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 1rem;
+        z-index: 1000;
+    }
+
+    .mobile-menu-checkbox:checked + .nav-header + .nav-links {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a,
+    .nav-dropdown .dropdown-toggle {
+        width: 100%;
+        padding: 1rem 1rem;
+        border-radius: 0.75rem;
+        display: block;
+        font-size: 1rem;
+    }
+
+    .nav-links a {
+        color: var(--text-primary);
+        background-color: rgba(255, 255, 255, 0.04);
+    }
+
+    .nav-links a.active,
+    .nav-dropdown .dropdown-toggle:hover,
+    .nav-dropdown .dropdown-checkbox:checked + .dropdown-toggle {
+        color: var(--text-primary);
+        background-color: rgba(0, 212, 255, 0.18);
+    }
+
+    .nav-links a.active::after {
+        display: none;
+    }
+
+    .nav-dropdown .dropdown-menu {
+        position: static;
+        top: auto;
+        right: auto;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        margin-top: 0.5rem;
+    }
+
+    .nav-dropdown .dropdown-menu a {
+        padding: 0.75rem 1rem;
+        background-color: rgba(255, 255, 255, 0.04);
+        border-radius: 0.75rem;
+    }
+
+    .nav-dropdown .dropdown-note {
+        margin-top: 0.75rem;
+        padding: 0.75rem 1rem;
+        background-color: rgba(255, 255, 255, 0.02);
+        border-radius: 0.75rem;
+        color: var(--text-secondary);
+    }
 }
 
 /* ==================== MAIN CONTENT ==================== */
