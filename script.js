@@ -120,7 +120,7 @@
 
         var playPromise = audio.play();
         if (!playPromise || typeof playPromise.then !== 'function') {
-            statusText.textContent = 'Click Log in to display website.';
+            statusText.textContent = 'Click Enter to continue.';
             showActionButton();
             return;
         }
@@ -129,7 +129,7 @@
             audioUnlocked = true;
             if (typeof onSuccess === 'function') onSuccess();
         }).catch(function () {
-            statusText.textContent = 'Click Log in to display website.';
+            statusText.textContent = 'Click Enter to continue.';
             showActionButton();
         });
     }
