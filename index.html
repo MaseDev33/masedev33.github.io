@@ -33,6 +33,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="startup-overlay" class="startup-overlay" role="status" aria-live="polite" aria-busy="true">
+        <div class="startup-panel" aria-label="Site loading screen">
+            <div class="startup-avatar-wrapper">
+                <div class="startup-avatar">
+                    <img src="./assets/mason.jpeg" alt="Mason Aldrich smiling portrait" loading="eager">
+                </div>
+            </div>
+            <div class="startup-title">Mason Aldrich</div>
+            <div id="startup-status" class="startup-status">Initializing MasonOS...</div>
+            <button id="startup-action-button" class="startup-action-button" type="button" aria-label="Log in to display website." style="display:none;">Log in</button>
+            <div class="startup-progress" aria-hidden="true">
+                <div id="startup-bar-fill" class="startup-progress-bar" data-progress="0%"></div>
+            </div>
+        </div>
+        <audio id="startup-audio" src="./assets/startup.mp3" preload="auto" aria-hidden="true"></audio>
+    </div>
+
+    <div class="page-shell">
     <nav class="navbar">
         <div class="nav-container">
             <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-checkbox">

@@ -949,3 +949,189 @@ main {
         align-self: flex-start;
     }
 }
+
+/* ==================== STARTUP LOADER ==================== */
+.startup-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: radial-gradient(circle at top, rgba(0, 212, 255, 0.12), transparent 30%),
+        linear-gradient(180deg, #09090B 0%, #050506 100%);
+    color: #eef2ff;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.startup-overlay.startup-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.98);
+}
+
+.startup-panel {
+    width: min(560px, 100%);
+    text-align: center;
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.startup-avatar-wrapper {
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.startup-avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    padding: 0.35rem;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.85), rgba(124, 58, 237, 0.8));
+    box-shadow: 0 0 40px rgba(0, 212, 255, 0.18);
+    animation: startup-image-show 1.2s ease forwards;
+}
+
+.startup-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid rgba(15, 20, 25, 0.85);
+    display: block;
+}
+
+.startup-title {
+    font-size: clamp(1.8rem, 2.75vw, 2.8rem);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: #f8fafc;
+}
+
+.startup-status {
+    font-size: 1rem;
+    color: rgba(226, 232, 240, 0.78);
+    min-height: 1.35em;
+}
+
+.startup-action-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.6rem;
+    border-radius: 999px;
+    border: none;
+    background: var(--primary-color);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    min-width: 170px;
+    cursor: pointer;
+    transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 12px 30px rgba(0, 212, 255, 0.18);
+}
+
+.startup-action-button:hover,
+.startup-action-button:focus-visible {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 14px 32px rgba(0, 212, 255, 0.24);
+}
+
+.startup-action-button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.startup-progress {
+    width: 100%;
+    height: 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 16px 35px rgba(0, 0, 0, 0.15);
+}
+
+.startup-progress-bar {
+    width: 0;
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #00d4ff 0%, #7c3aed 50%, #38bdf8 100%);
+    box-shadow: 0 0 28px rgba(0, 212, 255, 0.35);
+    transition: width 0.15s ease;
+}
+
+.page-shell {
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+}
+
+.page-shell.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+@keyframes startup-image-show {
+    0% {
+        opacity: 0;
+        transform: scale(0.88);
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .startup-avatar,
+    .startup-progress-bar,
+    .startup-overlay,
+    .page-shell {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .startup-avatar {
+        animation: startup-image-float 8s ease-in-out infinite;
+    }
+
+    @keyframes startup-image-float {
+        0%, 100% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-8px) scale(1.01); }
+    }
+}
+
+@media (max-width: 720px) {
+    .startup-panel {
+        gap: 1rem;
+    }
+
+    .startup-avatar {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+@media (max-width: 460px) {
+    .startup-avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .startup-progress {
+        height: 12px;
+    }
+}
