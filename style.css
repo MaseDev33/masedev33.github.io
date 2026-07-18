@@ -413,6 +413,64 @@ main {
     transform: translateY(-2px);
 }
 
+.error-hero {
+    padding: 5rem 0 4rem;
+}
+
+.error-hero .hero-content {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 2rem;
+}
+
+.error-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(0, 212, 255, 0.12);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.error-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16);
+}
+
+.error-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.error-card ul {
+    list-style: none;
+    display: grid;
+    gap: 0.85rem;
+}
+
+.error-card li {
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.error-card li::before {
+    content: '↳';
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
 .profile-image {
     width: 100%;
     max-width: 400px;
