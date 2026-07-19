@@ -1017,16 +1017,17 @@ main {
     align-items: center;
     justify-content: center;
     padding: 2rem;
-    background: radial-gradient(circle at top, rgba(0, 212, 255, 0.12), transparent 30%),
+    background: radial-gradient(circle at top, rgba(0, 212, 255, 0.2), transparent 26%),
         linear-gradient(180deg, #09090B 0%, #050506 100%);
     color: #eef2ff;
-    transition: opacity 0.35s ease, transform 0.35s ease;
+    transition: opacity 0.45s ease, transform 0.45s ease, filter 0.45s ease;
 }
 
 .startup-overlay.startup-hidden {
     opacity: 0;
     pointer-events: none;
-    transform: scale(0.98);
+    transform: scale(1.02);
+    filter: blur(8px);
 }
 
 .startup-panel {
@@ -1035,6 +1036,9 @@ main {
     display: grid;
     gap: 1.5rem;
     align-items: center;
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+    animation: startup-panel-enter 0.95s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .startup-avatar-wrapper {
@@ -1053,7 +1057,7 @@ main {
     padding: 0.35rem;
     background: linear-gradient(135deg, rgba(0, 212, 255, 0.85), rgba(124, 58, 237, 0.8));
     box-shadow: 0 0 40px rgba(0, 212, 255, 0.18);
-    animation: startup-image-show 1.2s ease forwards;
+    animation: startup-image-show 1.05s cubic-bezier(0.22, 1, 0.36, 1) both, startup-image-float 6s ease-in-out infinite 1.05s;
 }
 
 .startup-avatar img {
@@ -1070,42 +1074,14 @@ main {
     font-weight: 800;
     letter-spacing: 0.04em;
     color: #f8fafc;
+    animation: startup-text-enter 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .startup-status {
     font-size: 1rem;
     color: rgba(226, 232, 240, 0.78);
     min-height: 1.35em;
-}
-
-.startup-action-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.9rem 1.6rem;
-    border-radius: 999px;
-    border: none;
-    background: var(--primary-color);
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: 700;
-    min-width: 170px;
-    cursor: pointer;
-    transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
-    box-shadow: 0 12px 30px rgba(0, 212, 255, 0.18);
-}
-
-.startup-action-button:hover,
-.startup-action-button:focus-visible {
-    background: var(--primary-dark);
-    transform: translateY(-1px);
-    box-shadow: 0 14px 32px rgba(0, 212, 255, 0.24);
-}
-
-.startup-action-button:disabled {
-    opacity: 0.65;
-    cursor: not-allowed;
+    animation: startup-text-enter 1.05s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .startup-progress {
@@ -1137,6 +1113,23 @@ main {
     pointer-events: auto;
 }
 
+@keyframes startup-panel-enter {
+    0% {
+        opacity: 0;
+        transform: translateY(24px) scale(0.96);
+        filter: blur(12px);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-6px) scale(1.02);
+        filter: blur(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
 @keyframes startup-image-show {
     0% {
         opacity: 0;
@@ -1148,6 +1141,17 @@ main {
     }
     100% {
         transform: scale(1);
+    }
+}
+
+@keyframes startup-text-enter {
+    0% {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 

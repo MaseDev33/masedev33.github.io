@@ -3,7 +3,6 @@
     var pageShell = document.querySelector('.page-shell');
     var progressBar = document.getElementById('startup-bar-fill');
     var statusText = document.getElementById('startup-status');
-    var actionButton = document.getElementById('startup-action-button');
     var audio = document.getElementById('startup-audio');
     var startupKey = 'portfolioStartupShown';
     var statusLabels = [
@@ -18,6 +17,24 @@
     var steps = Math.ceil(durationMs / updateInterval);
     var shouldShowOverlay = !sessionStorage.getItem(startupKey);
     var audioUnlocked = false;
+
+    function startStartupAudio() {
+        if (!audio || audioUnlocked) return;
+
+        audio.autoplay = true;
+        audio.muted = false;
+        audio.volume = 1;
+        audio.currentTime = 0;
+
+        var playPromise = audio.play();
+        if (playPromise && typeof playPromise.then === 'function') {
+            playPromise.then(function () {
+                audioUnlocked = true;
+            }).catch(function () {
+                audioUnlocked = false;
+            });
+        }
+    }
 
     if (!overlay || !pageShell || !progressBar || !statusText) {
         if (pageShell) pageShell.classList.add('visible');
@@ -45,93 +62,21 @@
         }, 450);
     }
 
-    if (actionButton) {
-        actionButton.addEventListener('click', handleActionClick);
-    }
-
-    function showActionButton() {
-        if (!actionButton) return;
-        actionButton.style.display = 'inline-flex';
-        actionButton.disabled = false;
-    }
-
-    function hideActionButton() {
-        if (!actionButton) return;
-        actionButton.style.display = 'none';
-        actionButton.disabled = true;
-    }
-
-    function unlockAudio() {
-        if (!audio || audioUnlocked) return;
-        audio.muted = true;
-        audio.currentTime = 0;
-        var playPromise = audio.play();
-        if (!playPromise || typeof playPromise.then !== 'function') {
-            audio.muted = false;
-            return;
-        }
-
-        playPromise.then(function () {
-            audio.pause();
-            audio.currentTime = 0;
-            audio.muted = false;
-            audioUnlocked = true;
-        }).catch(function () {
-            audio.muted = false;
-        });
-    }
-
-    function handleActionClick() {
-        if (!actionButton) return;
-        actionButton.disabled = true;
-        statusText.textContent = 'Unlocking startup sound...';
-        if (!audio) {
-            finishStartup();
-            return;
-        }
-
-        audio.currentTime = 0;
-        audio.play().then(function () {
-            audioUnlocked = true;
-            statusText.textContent = 'Ready.';
-            setTimeout(finishStartup, 300);
-        }).catch(function () {
-            statusText.textContent = 'Playback blocked. Please try again.';
-            actionButton.disabled = false;
-        });
-    }
-
     function playAudioIfAllowed(onSuccess) {
         if (!audio) {
             if (typeof onSuccess === 'function') onSuccess();
             return;
         }
 
-        audio.currentTime = 0;
-
+        startStartupAudio();
         if (audioUnlocked) {
-            audio.play().then(function () {
-                if (typeof onSuccess === 'function') onSuccess();
-            }).catch(function () {
-                if (typeof onSuccess === 'function') onSuccess();
-            });
-            return;
-        }
-
-        var playPromise = audio.play();
-        if (!playPromise || typeof playPromise.then !== 'function') {
-            statusText.textContent = 'Click Enter to continue.';
-            showActionButton();
-            return;
-        }
-
-        playPromise.then(function () {
-            audioUnlocked = true;
             if (typeof onSuccess === 'function') onSuccess();
-        }).catch(function () {
-            statusText.textContent = 'Click Enter to continue.';
-            showActionButton();
-        });
+            return;
+        }
+
+        setTimeout(function () {
+            if (typeof onSuccess === 'function') onSuccess();
+        }, 250);
     }
 
     function skipOverlay() {
@@ -148,7 +93,21 @@
     pageShell.setAttribute('aria-hidden', 'true');
     setProgress(0);
     updateStatus(0);
-    hideActionButton();
+
+    function triggerStartupAudioOnReady() {
+        startStartupAudio();
+        window.removeEventListener('load', triggerStartupAudioOnReady);
+    }
+
+    function triggerVisibility() {
+        if (document.visibilityState === 'visible') {
+            startStartupAudio();
+        }
+    }
+
+    window.addEventListener('load', triggerStartupAudioOnReady, { once: true });
+    document.addEventListener('visibilitychange', triggerVisibility);
+    startStartupAudio();
 
     var start = performance.now();
     var intervalId = setInterval(function () {
@@ -162,7 +121,6 @@
             setProgress(100);
             updateStatus(100);
             playAudioIfAllowed(function () {
-                hideActionButton();
                 setTimeout(finishStartup, 300);
             });
         }
