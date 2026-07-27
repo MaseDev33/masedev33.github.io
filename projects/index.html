@@ -1,140 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Check out Mason's projects and portfolio. Personal portfolio website, Python projects, and more.">
-    <meta name="theme-color" content="#00d4ff">
-    <meta name="keywords" content="projects, portfolio, student, python, html, css, web development">
-    <meta name="author" content="Mason">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://masecodez33.github.io/projects">
-    <meta property="og:title" content="Mason's Projects - Student Developer Portfolio">
-    <meta property="og:description" content="View Mason's portfolio projects built with Python, HTML, and CSS.">
-    <meta property="og:image" content="https://masecodez33.github.io/assets/mason.jpeg">
-    <meta property="og:image:alt" content="Mason's profile photo">
-    <meta property="og:site_name" content="Mason's Portfolio">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://masecodez33.github.io/projects">
-    <meta property="twitter:title" content="Mason's Projects - Student Developer Portfolio">
-    <meta property="twitter:description" content="View Mason's portfolio projects built with Python, HTML, and CSS.">
-    <meta property="twitter:image" content="https://masecodez33.github.io/assets/mason.jpeg">
-    <meta property="twitter:creator" content="@MaseCodez33">
-    
-    <!-- Discord / WhatsApp / Messaging Apps -->
-    <meta name="og:locale" content="en_US">
-    
-    <title>Projects - Mason</title>
-    <link rel="icon" href="../assets/mason.ico">
-    <link rel="stylesheet" href="../style.css">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-checkbox">
-            <div class="nav-header">
-                <label for="mobile-menu-toggle" class="nav-menu-toggle">Menu ▾</label>
-                <div class="nav-logo">
-                    <a href="/">Mason</a>
-                </div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li class="nav-dropdown">
-                    <input type="checkbox" id="games-toggle" class="dropdown-checkbox">
-                    <label for="games-toggle" class="dropdown-toggle">Games ▾</label>
-                    <div class="dropdown-menu">
-                        <a href="https://masecodes.dev/idss" target="_blank" rel="noopener noreferrer">Web Game</a>
-                        <span class="dropdown-note">More games coming soon</span>
-                    </div>
-                </li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/projects" class="active">Projects</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Projects by Mason Aldrich, including web work, portfolio experiments, and game development projects." />
+    <title>Projects | Mason Aldrich</title>
+    <link rel="icon" href="../assets/mason.ico" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/mobile.css" />
+    <link rel="stylesheet" href="../css/projects.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="../">Mason Aldrich</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          Menu
+        </button>
+        <div class="nav-links" id="site-nav">
+          <a class="nav-link" href="../" data-page="home">Home</a>
+          <a class="nav-link active" href="../projects/" data-page="projects">Projects</a>
+          <a class="nav-link" href="../about/" data-page="about">About</a>
+          <a class="nav-link" href="../contact/" data-page="contact">Contact</a>
         </div>
-    </nav>
+      </nav>
+    </header>
 
-    <main>
-        <section class="page-section">
-            <div class="container">
-                <h1>Projects</h1>
-                <p class="projects-intro">I'm building my portfolio one project at a time. Here are some of the things I've been working on:</p>
+    <main class="page-shell">
+      <section class="page-intro" aria-labelledby="projects-title">
+        <p class="eyebrow">Projects</p>
+        <h1 id="projects-title">Things I’m building</h1>
+        <p>
+          I’m building my portfolio one project at a time. These are the projects that best show where I’m learning and what I enjoy making.
+        </p>
+      </section>
 
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>Python Practice Project</h3>
-                            <div class="tech-badges">
-                                <img class="tech-badge" src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python badge">
-                            </div>
-                        </div>
-                        <p class="project-description">A small Python program focused on learning programming fundamentals, logic, and problem-solving. Great for practicing variables, loops, conditionals, and functions.</p>
-                        <div class="project-meta">
-                            <span>2025</span>
-                        </div>
-                    </div>
+      <section class="projects-grid" aria-label="Project list">
+        <article class="project-card">
+          <div class="project-top">
+            <h2>Personal Portfolio Website</h2>
+            <span class="pill">HTML</span>
+            <span class="pill">CSS</span>
+          </div>
+          <p>This website is the portfolio you are looking at, built with semantic HTML, custom CSS, and a simple, lightweight layout.</p>
+          <p class="meta">2026</p>
+        </article>
 
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>Personal Portfolio Website</h3>
-                            <div class="tech-badges">
-                                <img class="tech-badge" src="https://img.shields.io/badge/HTML-FF7300?style=for-the-badge&logo=html5&logoColor=white" alt="HTML badge">
-                                <img class="tech-badge" src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS badge">
-                            </div>
-                        </div>
-                        <p class="project-description">This website is the portfolio website you are looking at, built with semantic HTML and custom CSS to practice layout, responsive design, and web design principles.</p>
-                        <div class="project-meta">
-                            <span>2026</span>
-                        </div>
-                    </div>
+        <article class="project-card">
+          <div class="project-top">
+            <h2>Game Developer Studio</h2>
+            <span class="pill">HTML</span>
+            <span class="pill">CSS</span>
+            <span class="pill">JavaScript</span>
+          </div>
+          <p>This project is a web-based game experience built around simple interactions, playful design, and experimentation with JavaScript. I used it as a way to practice structure, state, and user feedback while making something fun to play and easy to improve over time.</p>
+          <a class="button button-secondary" href="https://masecodes.dev/idss" target="_blank" rel="noopener noreferrer">Play Game</a>
+          <p class="meta">2026</p>
+        </article>
 
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>Mini Landing Page</h3>
-                            <div class="tech-badges">
-                                <img class="tech-badge" src="https://img.shields.io/badge/HTML-FF7300?style=for-the-badge&logo=html5&logoColor=white" alt="HTML badge">
-                                <img class="tech-badge" src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS badge">
-                            </div>
-                        </div>
-                        <p class="project-description">A responsive landing page built while practicing HTML and CSS skills. Features a clean design, navigation menu, and smooth styling. Good practice for layout and responsive design patterns.</p>
-                        <div class="project-meta">
-                            <span>2026</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-header">
-                            <h3>Web Game</h3>
-                            <div class="tech-badges">
-                                <img class="tech-badge" src="https://img.shields.io/badge/HTML-FF7300?style=for-the-badge&logo=html5&logoColor=white" alt="HTML badge">
-                                <img class="tech-badge" src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS badge">
-                                <img class="tech-badge" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript badge">
-                            </div>
-                        </div>
-                        <p class="project-description">A web game for people to play when bored. It includes save, load, and reset buttons with simple interaction controls.</p>
-                        <a class="btn btn-secondary project-action" href="https://masecodes.dev/idss" target="_blank" rel="noopener noreferrer">Play Game!</a>
-                        <div class="project-meta">
-                            <span>2026</span>
-                        </div>
-                    </div>
-                </div>
-
-                <section class="projects-note">
-                    <p>I'm constantly working on new projects and improving my skills. Check back soon for updates and new additions to my portfolio!</p>
-                </section>
-            </div>
-        </section>
+        <article class="project-card">
+          <div class="project-top">
+            <h2>Orange Pop</h2>
+            <span class="pill">HTML</span>
+            <span class="pill">CSS</span>
+            <span class="pill">JavaScript</span>
+          </div>
+          <p>Orange Pop is a lightweight web game built around quick reactions, simple controls, and playful arcade-style feedback. It was one of the projects I used to practice interactive design and game-like behavior in the browser.</p>
+          <a class="button button-secondary" href="https://masecodes.dev/orange-pop/" target="_blank" rel="noopener noreferrer">Play Orange Pop</a>
+          <p class="meta">2026</p>
+        </article>
+      </section>
     </main>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <p>&copy; 2025 Mason. Student Developer in Training.</p>
-        </div>
+    <footer class="site-footer">
+      <p>© 2026 Mason Aldrich</p>
+      <p>Built with HTML, CSS &amp; JavaScript</p>
     </footer>
-</body>
+
+    <script src="../js/script.js"></script>
+  </body>
 </html>

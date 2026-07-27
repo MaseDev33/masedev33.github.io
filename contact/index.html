@@ -1,93 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Get in touch with Mason. Feel free to reach out to chat about coding or connect on social media.">
-    <meta name="theme-color" content="#00d4ff">
-    <meta name="keywords" content="contact, connect, developer, student, coding">
-    <meta name="author" content="Mason">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://masecodez33.github.io/contact">
-    <meta property="og:title" content="Contact Mason - Student Developer">
-    <meta property="og:description" content="Get in touch with Mason. I'd love to hear from you and chat about coding!">
-    <meta property="og:image" content="https://masecodez33.github.io/assets/mason.jpeg">
-    <meta property="og:image:alt" content="Mason's profile photo">
-    <meta property="og:site_name" content="Mason's Portfolio">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://masecodez33.github.io/contact">
-    <meta property="twitter:title" content="Contact Mason - Student Developer">
-    <meta property="twitter:description" content="Get in touch with Mason. I'd love to hear from you and chat about coding!">
-    <meta property="twitter:image" content="https://masecodez33.github.io/assets/mason.jpeg">
-    <meta property="twitter:creator" content="@MaseCodez33">
-    
-    <!-- Discord / WhatsApp / Messaging Apps -->
-    <meta name="og:locale" content="en_US">
-    
-    <title>Contact - Mason</title>
-    <link rel="icon" href="../assets/mason.ico">
-    <link rel="stylesheet" href="../style.css">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-checkbox">
-            <div class="nav-header">
-                <label for="mobile-menu-toggle" class="nav-menu-toggle">Menu ▾</label>
-                <div class="nav-logo">
-                    <a href="/">Mason</a>
-                </div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li class="nav-dropdown">
-                    <input type="checkbox" id="games-toggle" class="dropdown-checkbox">
-                    <label for="games-toggle" class="dropdown-toggle">Games ▾</label>
-                    <div class="dropdown-menu">
-                        <a href="https://masecodes.dev/idss" target="_blank" rel="noopener noreferrer">Web Game</a>
-                        <span class="dropdown-note">More games coming soon</span>
-                    </div>
-                </li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/projects">Projects</a></li>
-                <li><a href="/contact" class="active">Contact</a></li>
-            </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Contact Mason Aldrich by email or through GitHub." />
+    <title>Contact | Mason Aldrich</title>
+    <link rel="icon" href="../assets/mason.ico" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/mobile.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="../">Mason Aldrich</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          Menu
+        </button>
+        <div class="nav-links" id="site-nav">
+          <a class="nav-link" href="../" data-page="home">Home</a>
+          <a class="nav-link" href="../projects/" data-page="projects">Projects</a>
+          <a class="nav-link" href="../about/" data-page="about">About</a>
+          <a class="nav-link active" href="../contact/" data-page="contact">Contact</a>
         </div>
-    </nav>
+      </nav>
+    </header>
 
-    <main>
-        <section class="page-section">
-            <div class="container">
-                <h1>Contact</h1>
-                <p class="contact-intro">I'd love to hear from you! Whether you want to chat about coding, discuss projects, or just say hi — feel free to reach out.</p>
+    <main class="page-shell">
+      <section class="page-intro" aria-labelledby="contact-title">
+        <p class="eyebrow">Contact</p>
+        <h1 id="contact-title">Reach out</h1>
+        <p>Feel free to contact me by email or visit my GitHub profile.</p>
+      </section>
 
-                <div class="contact-content">
-                    <div class="contact-card">
-                        <h3>Get in Touch</h3>
-                        <div class="contact-info">
-                            <div class="contact-item">
-                                <span class="contact-label">GitHub:</span>
-                                <p><a href="https://github.com/MaseDev33" target="_blank" rel="noopener noreferrer">github.com/MaseDev33</a></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="contact-message">
-                        <p><strong>Note:</strong> I'm currently a student, so I may take some time to respond. I'm always excited to connect with other people interested in coding and learning!</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <section class="content-card" aria-labelledby="contact-options-title">
+        <h2 id="contact-options-title">Ways to reach me</h2>
+        <ul class="contact-list">
+          <li>
+            <strong>Email</strong>
+            <a href="mailto:mason.r.aldrich@icloud.com">mason.r.aldrich@icloud.com</a>
+          </li>
+          <li>
+            <strong>GitHub</strong>
+            <a href="https://github.com/MaseDev33" target="_blank" rel="noopener noreferrer">https://github.com/MaseDev33</a>
+          </li>
+        </ul>
+        <div class="hero-actions">
+          <a class="button button-primary" href="mailto:mason.r.aldrich@icloud.com">Email</a>
+          <a class="button button-secondary" href="https://github.com/MaseDev33" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </section>
     </main>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <p>&copy; 2025 Mason. Student Developer in Training.</p>
-        </div>
+    <footer class="site-footer">
+      <p>© 2026 Mason Aldrich</p>
+      <p>Built with HTML, CSS &amp; JavaScript</p>
     </footer>
-</body>
+
+    <script src="../js/script.js"></script>
+  </body>
 </html>

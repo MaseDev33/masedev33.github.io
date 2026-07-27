@@ -1,0 +1,8 @@
+.project-card a.button {
+  margin-top: 0.6rem;
+  align-self: flex-start;
+}
+
+.project-card {
+  min-height: 100%;
+}
