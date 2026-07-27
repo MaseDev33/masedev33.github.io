@@ -1,133 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn more about Mason, a 15-year-old Grade 11 student developer learning web development and Python.">
-    <meta name="theme-color" content="#00d4ff">
-    <meta name="keywords" content="developer, about, student, python, html, css, web development">
-    <meta name="author" content="Mason">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://masecodez33.github.io/about">
-    <meta property="og:title" content="About Mason - Student Developer">
-    <meta property="og:description" content="Learn about Mason, a Grade 11 student who loves coding and is learning web development and Python.">
-    <meta property="og:image" content="https://masecodez33.github.io/assets/mason.jpeg">
-    <meta property="og:image:alt" content="Mason's profile photo">
-    <meta property="og:site_name" content="Mason's Portfolio">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://masecodez33.github.io/about">
-    <meta property="twitter:title" content="About Mason - Student Developer">
-    <meta property="twitter:description" content="Learn about Mason, a Grade 11 student who loves coding and is learning web development and Python.">
-    <meta property="twitter:image" content="https://masecodez33.github.io/assets/mason.jpeg">
-    <meta property="twitter:creator" content="@MaseCodez33">
-    
-    <!-- Discord / WhatsApp / Messaging Apps -->
-    <meta name="og:locale" content="en_US">
-    
-    <title>About - Mason</title>
-    <link rel="icon" href="../assets/mason.ico">
-    <link rel="stylesheet" href="../style.css">
-</head>
-<body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-checkbox">
-            <div class="nav-header">
-                <label for="mobile-menu-toggle" class="nav-menu-toggle">Menu ▾</label>
-                <div class="nav-logo">
-                    <a href="/">Mason</a>
-                </div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li class="nav-dropdown">
-                    <input type="checkbox" id="games-toggle" class="dropdown-checkbox">
-                    <label for="games-toggle" class="dropdown-toggle">Games ▾</label>
-                    <div class="dropdown-menu">
-                        <a href="https://masecodes.dev/idss" target="_blank" rel="noopener noreferrer">Web Game</a>
-                        <span class="dropdown-note">More games coming soon</span>
-                    </div>
-                </li>
-                <li><a href="/about" class="active">About</a></li>
-                <li><a href="/projects">Projects</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="About Mason Aldrich, a student developer interested in programming and web development." />
+    <title>About Me | Mason Aldrich</title>
+    <link rel="icon" href="../assets/mason.ico" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/mobile.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="../">Mason Aldrich</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          Menu
+        </button>
+        <div class="nav-links" id="site-nav">
+          <a class="nav-link" href="../" data-page="home">Home</a>
+          <a class="nav-link" href="../projects/" data-page="projects">Projects</a>
+          <a class="nav-link active" href="../about/" data-page="about">About</a>
+          <a class="nav-link" href="../contact/" data-page="contact">Contact</a>
         </div>
-    </nav>
+      </nav>
+    </header>
 
-    <main>
-        <section class="page-section">
-            <div class="container">
-                <h1>About Me</h1>
-                
-                <div class="about-content">
-                    <div class="about-text">
-                        <p class="lead-text">I'm Mason, a Grade 11 student who loves coding and is passionate about learning web development. I'm currently exploring Python, HTML, and CSS to build projects and develop my skills as a young developer.</p>
-                        
-                        <p>I enjoy the creative and logical aspects of programming — bringing ideas to life through code. Whether it's styling a website or solving a problem with Python, I'm always eager to learn and build something new.</p>
-                    </div>
-                    
-                    <div class="about-image">
-                        <img src="../assets/mason.jpeg" alt="Mason" class="profile-image-about">
-                    </div>
-                </div>
+    <main class="page-shell">
+      <section class="page-intro" aria-labelledby="about-title">
+        <p class="eyebrow">About Me</p>
+        <h1 id="about-title">A student learning by building</h1>
+        <p>
+          I’m a high school student who is curious about programming, problem solving, and the web. I enjoy making things that
+          look simple but teach me a lot along the way.
+        </p>
+      </section>
 
-                <section class="skills-section">
-                    <h2>Skills & Interests</h2>
-                    <div class="skills-grid">
-                        <div class="skill-card">
-                            <div class="skill-badges">
-                                <img class="skill-badge" src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python badge">
-                            </div>
-                            <p>Learning logic, problem-solving, and building small programs to strengthen my foundation.</p>
-                        </div>
-                        <div class="skill-card">
-                            <div class="skill-badges">
-                                <img class="skill-badge" src="https://img.shields.io/badge/HTML-FF7300?style=for-the-badge&logo=html5&logoColor=white" alt="HTML badge">
-                                <img class="skill-badge" src="https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS badge">
-                            </div>
-                            <p>Building responsive websites and learning web design principles to create clean, modern interfaces.</p>
-                        </div>
-                        <div class="skill-card">
-                            <div class="skill-badges">
-                                <img class="skill-badge" src="https://img.shields.io/badge/Web%20Design-7C3AED?style=for-the-badge&logo=figma&logoColor=white" alt="Web design badge">
-                            </div>
-                            <p>Exploring layout, typography, and design principles to make websites that look polished and professional.</p>
-                        </div>
-                        <div class="skill-card">
-                            <div class="skill-badges">
-                                <img class="skill-badge" src="https://img.shields.io/badge/Problem%20Solving-10B981?style=for-the-badge" alt="Problem solving badge">
-                            </div>
-                            <p>Tackling coding challenges and debugging to improve my ability to think through problems systematically.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="goals-section">
-                    <h2>My Goals</h2>
-                    <div class="goals-content">
-                        <p>I'm focused on building a strong foundation in web development and Python. Over time, I want to:</p>
-                        <ul class="goals-list">
-                            <li>Master HTML, CSS, and create more complex, responsive websites</li>
-                            <li>Deepen my Python knowledge and build more meaningful projects</li>
-                            <li>Develop my design skills and learn best practices for clean code</li>
-                            <li>Build a portfolio that reflects my growth and learning journey</li>
-                            <li>Eventually explore JavaScript and expand into full-stack development</li>
-                        </ul>
-                    </div>
-                </section>
-            </div>
-        </section>
+      <section class="content-card" aria-labelledby="info-title">
+        <h2 id="info-title">Quick information</h2>
+        <table class="info-table">
+          <tbody>
+            <tr>
+              <th scope="row">Name</th>
+              <td>Mason Aldrich</td>
+            </tr>
+            <tr>
+              <th scope="row">Birthday</th>
+              <td>10/21/2010</td>
+            </tr>
+            <tr>
+              <th scope="row">Grade</th>
+              <td>11</td>
+            </tr>
+            <tr>
+              <th scope="row">GitHub</th>
+              <td><a href="https://github.com/MaseDev33">MaseDev33</a></td>
+            </tr>
+            <tr>
+              <th scope="row">Email</th>
+              <td><a href="mailto:mason.r.aldrich@icloud.com">mason.r.aldrich@icloud.com</a></td>
+            </tr>
+            <tr>
+              <th scope="row">Location</th>
+              <td>United States East Coast</td>
+            </tr>
+            <tr>
+              <th scope="row">Languages</th>
+              <td>Python, HTML, CSS</td>
+            </tr>
+            <tr>
+              <th scope="row">Interests</th>
+              <td>Programming, Web Development, Technology, Open Source, Learning New Things</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
     </main>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <p>&copy; 2025 Mason. Student Developer in Training.</p>
-        </div>
+    <footer class="site-footer">
+      <p>© 2026 Mason Aldrich</p>
+      <p>Built with HTML, CSS &amp; JavaScript</p>
     </footer>
-</body>
+
+    <script src="../js/script.js"></script>
+  </body>
 </html>

@@ -1,124 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mason is a 15-year-old Grade 11 student developer learning Python, HTML, and CSS. Check out my projects and portfolio.">
-    <meta name="theme-color" content="#00d4ff">
-    <meta name="keywords" content="developer, portfolio, student, python, html, css, web development">
-    <meta name="author" content="Mason">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://masecodez33.github.io/">
-    <meta property="og:title" content="Mason - Student Developer">
-    <meta property="og:description" content="15-year-old Grade 11 student learning and building projects with Python, HTML, and CSS.">
-    <meta property="og:image" content="https://masecodez33.github.io/assets/mason.jpeg">
-    <meta property="og:image:alt" content="Mason's profile photo">
-    <meta property="og:site_name" content="Mason's Portfolio">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://masecodez33.github.io/">
-    <meta property="twitter:title" content="Mason - Student Developer">
-    <meta property="twitter:description" content="15-year-old Grade 11 student learning and building projects with Python, HTML, and CSS.">
-    <meta property="twitter:image" content="https://masecodez33.github.io/assets/mason.jpeg">
-    <meta property="twitter:creator" content="@MaseCodez33">
-    
-    <!-- Discord / WhatsApp / Messaging Apps -->
-    <meta name="og:locale" content="en_US">
-    
-    <title>Mason - Student Developer</title>
-    <link rel="icon" href="./assets/mason.ico">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div id="startup-overlay" class="startup-overlay" role="status" aria-live="polite" aria-busy="true">
-        <div class="startup-panel" aria-label="Site loading screen">
-            <div class="startup-avatar-wrapper">
-                <div class="startup-avatar">
-                    <img src="./assets/mason.jpeg" alt="Mason Aldrich smiling portrait" loading="eager">
-                </div>
-            </div>
-            <div class="startup-title">Mason Aldrich</div>
-            <div id="startup-status" class="startup-status">Initializing MasonOS...</div>
-            <div class="startup-progress" aria-hidden="true">
-                <div id="startup-bar-fill" class="startup-progress-bar" data-progress="0%"></div>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Mason Aldrich is a high school student developer interested in programming, web development, and building small projects."
+    />
+    <title>Mason Aldrich | Student Developer</title>
+    <link rel="icon" href="assets/mason.ico" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/mobile.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="./">Mason Aldrich</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          Menu
+        </button>
+        <div class="nav-links" id="site-nav">
+          <a class="nav-link active" href="./" data-page="home">Home</a>
+          <a class="nav-link" href="./projects/" data-page="projects">Projects</a>
+          <a class="nav-link" href="./about/" data-page="about">About</a>
+          <a class="nav-link" href="./contact/" data-page="contact">Contact</a>
         </div>
-        <audio id="startup-audio" src="./assets/startup.wav" preload="auto" autoplay playsinline aria-hidden="true"></audio>
-    </div>
-
-    <div class="page-shell">
-    <nav class="navbar">
-        <div class="nav-container">
-            <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-checkbox">
-            <div class="nav-header">
-                <label for="mobile-menu-toggle" class="nav-menu-toggle">Menu ▾</label>
-                <div class="nav-logo">
-                    <a href="/">Mason</a>
-                </div>
-            </div>
-            <ul class="nav-links">
-                <li><a href="/" class="active">Home</a></li>
-                <li class="nav-dropdown">
-                    <input type="checkbox" id="games-toggle" class="dropdown-checkbox">
-                    <label for="games-toggle" class="dropdown-toggle">Games ▾</label>
-                    <div class="dropdown-menu">
-                        <a href="https://masecodes.dev/idss" target="_blank" rel="noopener noreferrer">Web Game</a>
-                        <span class="dropdown-note">More games coming soon</span>
-                    </div>
-                </li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/projects">Projects</a></li>
-                <li><a href="/contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+      </nav>
+    </header>
 
     <main>
-        <section class="hero">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Hi, I'm Mason</h1>
-                    <p class="intro-text">I'm a student developer learning Python, HTML, and CSS</p>
-                    <div class="hero-buttons">
-                        <a href="/projects" class="btn btn-primary">View Projects</a>
-                        <a href="/about" class="btn btn-secondary">About Me</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="assets/mason.jpeg" alt="Mason" class="profile-image">
-                </div>
-            </div>
-        </section>
+      <section class="hero" aria-labelledby="home-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Student • Developer • Grade 11</p>
+          <h1 id="home-title">Mason Aldrich</h1>
+          <p class="hero-subtitle">I build simple things with code and I’m always learning.</p>
+          <p class="hero-text">
+            I’m a high school student interested in programming and web development. I spend most of my time writing Python,
+            trying out HTML and CSS, and turning ideas into small projects that teach me something new.
+          </p>
+          <ul class="tag-list" aria-label="Languages I use">
+            <li>Python</li>
+            <li>HTML</li>
+            <li>CSS</li>
+          </ul>
+          <div class="hero-actions">
+            <a class="button button-primary" href="./projects/">View Projects</a>
+            <a class="button button-secondary" href="./about/">About Me</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img src="assets/mason.jpeg" alt="Portrait of Mason Aldrich" />
+        </div>
+      </section>
 
-        <section class="about-preview">
-            <div class="container">
-                <h2>What I'm Working On</h2>
-                <div class="preview-grid">
-                    <div class="preview-card">
-                        <h3>Learning & Growing</h3>
-                        <p>I'm a Grade 11 student diving into web development and Python. Every project is a chance to learn something new and improve my skills.</p>
-                    </div>
-                    <div class="preview-card">
-                        <h3>Building Projects</h3>
-                        <p>I'm creating real projects with HTML, CSS, and Python to strengthen my foundation as a developer and build my portfolio.</p>
-                    </div>
-                    <div class="preview-card">
-                        <h3>Growing My Skills</h3>
-                        <p>I'm constantly building experience, tackling challenges, and creating projects that showcase my growth as a developer.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <section class="panel" aria-labelledby="focus-title">
+        <div class="panel-header">
+          <p class="eyebrow">What I focus on</p>
+          <h2 id="focus-title">Building small, useful things</h2>
+        </div>
+        <div class="panel-grid">
+          <article class="panel-card">
+            <h3>Programming</h3>
+            <p>I enjoy learning the fundamentals and practicing them through real projects.</p>
+          </article>
+          <article class="panel-card">
+            <h3>Web Development</h3>
+            <p>I like creating clean, lightweight websites with simple structure and clear code.</p>
+          </article>
+          <article class="panel-card">
+            <h3>Open Learning</h3>
+            <p>I keep improving by building, debugging, and sharing what I learn.</p>
+          </article>
+        </div>
+      </section>
     </main>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <p>&copy; 2025 Mason. Student Developer in Training.</p>
-        </div>
+    <footer class="site-footer">
+      <p>© 2026 Mason Aldrich</p>
+      <p>Built with HTML, CSS &amp; JavaScript</p>
     </footer>
-    <script src="script.js"></script>
-</body>
+
+    <script src="js/script.js"></script>
+  </body>
 </html>
