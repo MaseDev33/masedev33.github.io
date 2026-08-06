@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Read the latest posts from Mason Aldrich's blog and subscribe to the RSS feed." />
+    <title>Blog | Mason Aldrich</title>
+    <link rel="icon" href="../assets/mason.ico" />
+    <link rel="alternate" type="application/rss+xml" title="MaseCodes RSS Feed" href="/rss.xml" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/mobile.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="../">Mason Aldrich</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          Menu
+        </button>
+        <div class="nav-links" id="site-nav">
+          <a class="nav-link" href="../" data-page="home">Home</a>
+          <a class="nav-link active" href="../blog/" data-page="blog">Blog</a>
+          <a class="nav-link" href="../projects/" data-page="projects">Projects</a>
+          <a class="nav-link" href="../about/" data-page="about">About</a>
+          <a class="nav-link" href="../contact/" data-page="contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page-shell">
+      <section class="page-intro" aria-labelledby="blog-title">
+        <p class="eyebrow">Blog</p>
+        <h1 id="blog-title">Latest updates from my writing</h1>
+        <p>
+          Browse recent posts and subscribe to the RSS feed if you want new articles delivered to your reader.
+        </p>
+        <p>
+          <button class="button button-secondary" id="copy-rss-button" type="button">Copy RSS link</button>
+        </p>
+      </section>
+
+      <section class="content-card" aria-labelledby="blog-posts-title">
+        <h2 id="blog-posts-title">Recent posts</h2>
+        <ul class="contact-list" id="blog-posts">
+          <li>Loading posts...</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Mason Aldrich</p>
+      <p>Built with HTML, CSS &amp; JavaScript</p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+      const feedUrl = '../rss.xml';
+      const list = document.getElementById('blog-posts');
+      const copyButton = document.getElementById('copy-rss-button');
+
+      if (copyButton) {
+        copyButton.addEventListener('click', async () => {
+          const rssUrl = 'https://masecodes.dev/rss.xml';
+
+          try {
+            await navigator.clipboard.writeText(rssUrl);
+            const originalText = copyButton.textContent;
+            copyButton.textContent = 'Copied RSS link!';
+            copyButton.disabled = true;
+
+            window.setTimeout(() => {
+              copyButton.textContent = originalText;
+              copyButton.disabled = false;
+            }, 2000);
+          } catch (error) {
+            copyButton.textContent = 'Copy failed';
+            window.setTimeout(() => {
+              copyButton.textContent = 'Copy RSS link';
+            }, 2000);
+          }
+        });
+      }
+
+      fetch(feedUrl, {
+        headers: {
+          Accept: 'application/rss+xml, application/xml, text/xml',
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Unable to load RSS feed.');
+          }
+          return response.text();
+        })
+        .then((text) => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(text, 'application/xml');
+          const items = Array.from(doc.querySelectorAll('item'));
+
+          if (!items.length) {
+            list.innerHTML = '<li>No posts are available right now. Check back soon or subscribe to the RSS feed.</li>';
+            return;
+          }
+
+          list.innerHTML = items
+            .map((item) => {
+              const title = item.querySelector('title')?.textContent?.trim() || 'Untitled post';
+              const link = item.querySelector('link')?.textContent?.trim() || '';
+              const description = item.querySelector('description')?.textContent?.trim() || '';
+              const pubDate = item.querySelector('pubDate')?.textContent?.trim() || '';
+              const cleanedDescription = description.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+
+              return `
+                <li>
+                  <strong>${title}</strong>
+                  ${pubDate ? `<p class="meta">${pubDate}</p>` : ''}
+                  ${cleanedDescription ? `<p>${cleanedDescription}</p>` : ''}
+                  ${link ? `<p><a href="${link}" target="_blank" rel="noopener noreferrer">Read more</a></p>` : ''}
+                </li>
+              `;
+            })
+            .join('');
+        })
+        .catch(() => {
+          list.innerHTML = '<li>Unable to load posts right now. Please try again later.</li>';
+        });
+    </script>
+  </body>
+</html>
