@@ -1,3 +1,0 @@
-- name: Show RSS changes
-  run: |
-    diff -u rss.xml rss.xml.new | head -100 || true
