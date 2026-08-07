@@ -7,10 +7,10 @@
     <link>https://masedev33.beehiiv.com/</link>
     <atom:link href="https://rss.beehiiv.com/feeds/733ZbkQv2J.xml" rel="self"/>
     
-    <lastBuildDate>Fri, 7 Aug 2026 00:00:16 +0000</lastBuildDate>
-    <pubDate>Fri, 7 Aug 2026 00:00:16 +0000</pubDate>
-    <atom:published>2026-08-07T00:00:16Z</atom:published>
-    <atom:updated>2026-08-07T00:00:16Z</atom:updated>
+    <lastBuildDate>Fri, 7 Aug 2026 00:18:13 +0000</lastBuildDate>
+    <pubDate>Fri, 07 Aug 2026 00:07:32 +0000</pubDate>
+    <atom:published>2026-08-07T00:07:32Z</atom:published>
+    <atom:updated>2026-08-07T00:18:13Z</atom:updated>
     
       <category>Technology</category>
     <copyright>Copyright 2026, Mason Aldrich’s Development Blog</copyright>
@@ -25,6 +25,25 @@
     <generator>beehiiv</generator>
     <language>en-us</language>
     <webMaster>support@beehiiv.com (Beehiiv Support)</webMaster>
+
+      <item>
+  <title>Welcome to the Chaos</title>
+  <description>You made it!</description>
+  <link>https://masedev33.beehiiv.com/p/welcome</link>
+  <guid isPermaLink="true">https://masedev33.beehiiv.com/p/welcome</guid>
+  <pubDate>Fri, 07 Aug 2026 00:07:32 +0000</pubDate>
+  <atom:published>2026-08-07T00:07:32Z</atom:published>
+    <dc:creator>Mason Aldrich</dc:creator>
+  <content:encoded><![CDATA[
+    <div class='beehiiv'><style>
+  .bh__table, .bh__table_header, .bh__table_cell { border: 1px solid #C0C0C0; }
+  .bh__table_cell { padding: 5px; background-color: #F100FF; }
+  .bh__table_cell p { color: #9EC3FF; font-family: 'Courier','Lucida Typewriter',monospace !important; overflow-wrap: break-word; }
+  .bh__table_header { padding: 5px; background-color:#F100FF; }
+  .bh__table_header p { color: #9EC3FF; font-family:'Trebuchet MS','Lucida Grande',Tahoma,sans-serif !important; overflow-wrap: break-word; }
+</style><div class='beehiiv__body'><p class="paragraph" style="text-align:left;"><span style="font-family:Times New Roman;font-size:20px;">Hey!</span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Times New Roman;font-size:20px;">Whether you clicked the wrong link, got sent here by a friend, or intentionally wandered into this corner of the internet, welcome. Grab a snack, open too many tabs, and make yourself at home.</span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Times New Roman;font-size:20px;">This blog is where code, technology, random ideas, and the occasional “Why did that work?” moment all end up. If you’ve ever spent two hours debugging only to realize you forgot a semicolon—or you’ve restarted your computer because it somehow fixes everything—you’ll fit right in.</span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Times New Roman;font-size:20px;">Expect posts about programming, cool projects, tutorials, gadgets, experiments, and probably a few stories about bugs that had absolutely no business existing. Some things will be polished. Others will look like they escaped from a late-night coding session fueled entirely by caffeine and questionable decisions.</span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Times New Roman;font-size:20px;">No corporate buzzwords. No pretending every project is a “game-changing innovation.” Just real tech, real learning, and real moments where everything catches fire before magically working five minutes later.</span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Times New Roman;font-size:20px;">Technology changes fast, and honestly, that’s half the fun. There’s always something new to build, break, fix, optimize, or accidentally delete. If I discover something useful—or hilariously confusing—it’s probably going to end up here.</span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Times New Roman;font-size:20px;">So bookmark the site, stick around, and don’t panic if something looks a little experimental. Around here, “It works on my machine” is considered a temporary achievement.</span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Times New Roman;font-size:20px;">Thanks for stopping by. Now let’s see what we can build… or accidentally crash.</span></p><p class="paragraph" style="text-align:left;"><span style="font-family:TimesNewRomanPS-BoldMT;font-size:20px;"><b>Welcome aboard. </b></span>🚀</p><div class="image"><img alt="" class="image__image" style="" src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/asset/file/6a51694b-36fd-4f2c-ae8f-909d15ae08ff/IMG_7148.png?t=1786061078"/></div></div><div class='beehiiv__footer'><br class='beehiiv__footer__break'><hr class='beehiiv__footer__line'><a target="_blank" class="beehiiv__footer_link" style="text-align: center;" href="https://www.beehiiv.com/?utm_campaign=bd8efb81-0d55-4cab-9b68-49787ed7ae66&utm_medium=post_rss&utm_source=mason_aldrich_s_development_blog">Powered by beehiiv</a></div></div>
+  ]]></content:encoded>
+</item>
 
   </channel>
 </rss>
