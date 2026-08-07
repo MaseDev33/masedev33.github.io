@@ -1,4 +1,3 @@
-# For RSS
 name: Update RSS Mirror
 
 on:
@@ -11,69 +10,40 @@ concurrency:
 jobs:
   update-rss:
     runs-on: ubuntu-latest
+
     permissions:
       contents: write
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Download Beehiiv RSS
+      - name: Download Beehiiv RSS feed
         run: |
-          curl -fsSL https://rss.beehiiv.com/feeds/733ZbkQv2J.xml -o rss.new.xml
+          set -euo pipefail
+          curl -fsSL https://rss.beehiiv.com/feeds/733ZbkQv2J.xml -o rss.xml.new
 
-      - name: Compare RSS posts only
+      - name: Compare RSS
         id: compare
         run: |
-          python3 <<'PY'
-          import xml.etree.ElementTree as ET
-          import hashlib
-          import os
-
-          def get_hash(file):
-              root = ET.parse(file).getroot()
-              items = []
-
-              for item in root.findall(".//item"):
-                  items.append(
-                      (
-                          item.findtext("title", ""),
-                          item.findtext("link", ""),
-                          item.findtext("guid", "")
-                      )
-                  )
-
-              return hashlib.sha256(
-                  repr(items).encode()
-              ).hexdigest()
-
-          old = get_hash("rss.xml") if os.path.exists("rss.xml") else ""
-          new = get_hash("rss.new.xml")
-
-          if old == new:
-              print("No new posts.")
-              open("changed", "w").write("false")
-          else:
-              print("New posts detected.")
-              open("changed", "w").write("true")
-          PY
+          if [ -f rss.xml ] && cmp -s rss.xml rss.xml.new; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "RSS unchanged."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "RSS changed."
+          fi
 
       - name: Update rss.xml
+        if: steps.compare.outputs.changed == 'true'
         run: |
-          if [ "$(cat changed)" = "true" ]; then
-            mv rss.new.xml rss.xml
-          else
-            rm rss.new.xml
-          fi
+          mv rss.xml.new rss.xml
 
       - name: Commit RSS update
-        if: hashFiles('changed') != ''
+        if: steps.compare.outputs.changed == 'true'
         run: |
-          if [ "$(cat changed)" != "true" ]; then
-            echo "Nothing changed."
-            exit 0
-          fi
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
