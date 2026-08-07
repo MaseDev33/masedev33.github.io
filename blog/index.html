@@ -54,7 +54,7 @@
 
     <script src="../js/script.js"></script>
     <script>
-      const feedUrl = '../rss.xml';
+      const feedUrl = 'https://masecodes.dev/rss.xml';
       const list = document.getElementById('blog-posts');
       const copyButton = document.getElementById('copy-rss-button');
 
@@ -82,6 +82,7 @@
       }
 
       fetch(feedUrl, {
+        cache: 'no-store',
         headers: {
           Accept: 'application/rss+xml, application/xml, text/xml',
         },
@@ -95,26 +96,41 @@
         .then((text) => {
           const parser = new DOMParser();
           const doc = parser.parseFromString(text, 'application/xml');
-          const items = Array.from(doc.querySelectorAll('item'));
+          const items = Array.from(doc.getElementsByTagName('item'));
+          const entries = items.length ? items : Array.from(doc.getElementsByTagName('entry'));
 
-          if (!items.length) {
+          if (!entries.length) {
             list.innerHTML = '<li>No posts are available right now. Check back soon or subscribe to the RSS feed.</li>';
             return;
           }
 
-          list.innerHTML = items
-            .map((item) => {
-              const title = item.querySelector('title')?.textContent?.trim() || 'Untitled post';
-              const link = item.querySelector('link')?.textContent?.trim() || '';
-              const description = item.querySelector('description')?.textContent?.trim() || '';
-              const pubDate = item.querySelector('pubDate')?.textContent?.trim() || '';
-              const cleanedDescription = description.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+          const getDateValue = (item) => {
+            const rawDate = item.getElementsByTagName('pubDate')[0]?.textContent?.trim() || '';
+            const parsedDate = Date.parse(rawDate);
+            return Number.isNaN(parsedDate) ? 0 : parsedDate;
+          };
+
+          const sortedEntries = [...entries].sort((a, b) => getDateValue(b) - getDateValue(a));
+
+          list.innerHTML = sortedEntries
+            .map((item, index) => {
+              const title = item.getElementsByTagName('title')[0]?.textContent?.trim() || 'Untitled post';
+              const link = item.getElementsByTagName('link')[0]?.textContent?.trim() || '';
+              const descriptionNode = item.getElementsByTagName('description')[0] || item.getElementsByTagName('content:encoded')[0];
+              const description = descriptionNode?.textContent?.trim() || '';
+              const pubDate = item.getElementsByTagName('pubDate')[0]?.textContent?.trim() || '';
+              const cleanedDescription = description
+                .replace(/<[^>]+>/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim()
+                .slice(0, 220);
 
               return `
                 <li>
+                  ${index > 0 ? '<hr />' : ''}
                   <strong>${title}</strong>
                   ${pubDate ? `<p class="meta">${pubDate}</p>` : ''}
-                  ${cleanedDescription ? `<p>${cleanedDescription}</p>` : ''}
+                  ${cleanedDescription ? `<p>${cleanedDescription}${cleanedDescription.length >= 220 ? '…' : ''}</p>` : ''}
                   ${link ? `<p><a href="${link}" target="_blank" rel="noopener noreferrer">Read more</a></p>` : ''}
                 </li>
               `;
