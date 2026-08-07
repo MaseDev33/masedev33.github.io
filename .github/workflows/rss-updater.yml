@@ -16,45 +16,66 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Download latest Beehiiv RSS feed
+      - name: Download Beehiiv RSS
         run: |
-          set -euo pipefail
-          curl -fsSL https://rss.beehiiv.com/feeds/733ZbkQv2J.xml -o rss.xml.new
+          curl -fsSL https://rss.beehiiv.com/feeds/733ZbkQv2J.xml -o rss.new.xml
 
-      - name: Normalize RSS feed
+      - name: Compare RSS posts only
+        id: compare
         run: |
-          set -euo pipefail
+          python3 <<'PY'
+          import xml.etree.ElementTree as ET
+          import hashlib
+          import os
 
-          # Remove common changing metadata fields
-          sed -i '/<lastBuildDate>/d' rss.xml.new
+          def get_hash(file):
+              root = ET.parse(file).getroot()
+              items = []
 
-      - name: Replace local mirror and refresh repository state
+              for item in root.findall(".//item"):
+                  items.append(
+                      (
+                          item.findtext("title", ""),
+                          item.findtext("link", ""),
+                          item.findtext("guid", "")
+                      )
+                  )
+
+              return hashlib.sha256(
+                  repr(items).encode()
+              ).hexdigest()
+
+          old = get_hash("rss.xml") if os.path.exists("rss.xml") else ""
+          new = get_hash("rss.new.xml")
+
+          if old == new:
+              print("No new posts.")
+              open("changed", "w").write("false")
+          else:
+              print("New posts detected.")
+              open("changed", "w").write("true")
+          PY
+
+      - name: Update rss.xml
         run: |
-          set -euo pipefail
-
-          if [ -f rss.xml ] && cmp -s rss.xml rss.xml.new; then
-            echo "RSS feed unchanged."
-            rm -f rss.xml.new
-            exit 0
+          if [ "$(cat changed)" = "true" ]; then
+            mv rss.new.xml rss.xml
+          else
+            rm rss.new.xml
           fi
 
-          mv rss.xml.new rss.xml
-          echo "RSS feed updated."
-
-          git pull --ff-only || true
+      - name: Commit RSS update
+        if: hashFiles('changed') != ''
+        run: |
+          if [ "$(cat changed)" != "true" ]; then
+            echo "Nothing changed."
+            exit 0
+          fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add rss.xml
-
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-            exit 0
-          fi
-
           git commit -m "chore: update RSS mirror"
           git push
