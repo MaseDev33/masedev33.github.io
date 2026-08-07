@@ -1,4 +1,4 @@
-name: Update RSS Mirror
+- name: Update RSS Mirror
 
 on:
   workflow_dispatch:
