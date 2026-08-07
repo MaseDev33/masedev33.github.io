@@ -1,6 +1,8 @@
-- name: Update RSS Mirror
+name: Update RSS Mirror
 
 on:
+  schedule:
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 concurrency:
@@ -10,7 +12,6 @@ concurrency:
 jobs:
   update-rss:
     runs-on: ubuntu-latest
-
     permissions:
       contents: write
 
@@ -20,33 +21,30 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Download Beehiiv RSS feed
+      - name: Download latest Beehiiv RSS feed
         run: |
           set -euo pipefail
           curl -fsSL https://rss.beehiiv.com/feeds/733ZbkQv2J.xml -o rss.xml.new
 
-      - name: Compare RSS
-        id: compare
+      - name: Replace local mirror and refresh repository state
         run: |
-          if [ -f rss.xml ] && cmp -s rss.xml rss.xml.new; then
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "RSS unchanged."
+          set -euo pipefail
+          if cmp -s rss.xml rss.xml.new; then
+            echo "RSS feed unchanged."
           else
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "RSS changed."
+            mv rss.xml.new rss.xml
+            echo "RSS feed updated."
           fi
 
-      - name: Update rss.xml
-        if: steps.compare.outputs.changed == 'true'
-        run: |
-          mv rss.xml.new rss.xml
-
-      - name: Commit RSS update
-        if: steps.compare.outputs.changed == 'true'
-        run: |
+          git pull --ff-only || true
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
           git add rss.xml
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
           git commit -m "chore: update RSS mirror"
           git push
