@@ -7,10 +7,10 @@
     <link>https://masedev33.beehiiv.com/</link>
     <atom:link href="https://rss.beehiiv.com/feeds/733ZbkQv2J.xml" rel="self"/>
     
-    <lastBuildDate>Mon, 10 Aug 2026 18:20:19 +0000</lastBuildDate>
-    <pubDate>Sat, 08 Aug 2026 14:53:58 +0000</pubDate>
-    <atom:published>2026-08-08T14:53:58Z</atom:published>
-    <atom:updated>2026-08-10T18:20:19Z</atom:updated>
+    <lastBuildDate>Mon, 10 Aug 2026 18:35:19 +0000</lastBuildDate>
+    <pubDate>Mon, 10 Aug 2026 18:21:07 +0000</pubDate>
+    <atom:published>2026-08-10T18:21:07Z</atom:published>
+    <atom:updated>2026-08-10T18:35:19Z</atom:updated>
     
       <category>Technology</category>
     <copyright>Copyright 2026, Mason Aldrich’s Development Blog</copyright>
@@ -25,6 +25,25 @@
     <generator>beehiiv</generator>
     <language>en-us</language>
     <webMaster>support@beehiiv.com (Beehiiv Support)</webMaster>
+
+      <item>
+  <title>📱 VTech’s Secret Phone Trick: Bluetooth Meets CTC 📞</title>
+  <description>How the VTech DS6771-3 combines cordless handsets with Bluetooth to turn your phone into a mini communications hub</description>
+  <link>https://masedev33.beehiiv.com/p/vtech-with-bluetooth</link>
+  <guid isPermaLink="true">https://masedev33.beehiiv.com/p/vtech-with-bluetooth</guid>
+  <pubDate>Mon, 10 Aug 2026 18:21:07 +0000</pubDate>
+  <atom:published>2026-08-10T18:21:07Z</atom:published>
+    <dc:creator>Mason Aldrich</dc:creator>
+  <content:encoded><![CDATA[
+    <div class='beehiiv'><style>
+  .bh__table, .bh__table_header, .bh__table_cell { border: 1px solid #C0C0C0; }
+  .bh__table_cell { padding: 5px; background-color: #F100FF; }
+  .bh__table_cell p { color: #9EC3FF; font-family: 'Helvetica',Arial,sans-serif !important; overflow-wrap: break-word; }
+  .bh__table_header { padding: 5px; background-color:#F100FF; }
+  .bh__table_header p { color: #9EC3FF; font-family:'Trebuchet MS','Lucida Grande',Tahoma,sans-serif !important; overflow-wrap: break-word; }
+</style><div class='beehiiv__body'><p class="paragraph" style="text-align:left;"><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:20px;">The VTech DS6771-3 isn’t just a regular cordless phone system. One of its more interesting features is its ability to work with </span><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:20px;"><b>Bluetooth devices</b></span><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:20px;">, alongside its normal cordless handsets.</span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:20px;">The important thing to understand is that </span><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:20px;"><b>Bluetooth and CTC aren’t the same thing</b></span><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:20px;">. The cordless handsets communicate with the base using VTech’s cordless technology, while Bluetooth provides a separate connection for compatible devices.</span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:24px;"><b>Bluetooth on the DS6771-3</b></span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:20px;">The base can pair with compatible Bluetooth-enabled devices, allowing the phone system to interact with them wirelessly.</span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:20px;">This means your phone system doesn’t necessarily have to rely only on the physical telephone jack for every call.</span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:20px;">Bluetooth essentially gives the base another way to connect to a phone.</span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:24px;"><b>How CTC fits in</b></span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:20px;">CTC is responsible for the relationship between the base and its cordless handsets.</span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:20px;">Bluetooth is a separate connection handled by the base.</span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:20px;">The base therefore acts as the central point for both systems: it communicates with the cordless handsets through its normal cordless connection while also maintaining Bluetooth connections with compatible devices.</span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:24px;"><b>Why this is interesting</b></span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:20px;">This makes the DS6771-3 more flexible than a basic cordless phone.</span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:20px;">Instead of thinking of it as simply “a phone with three handsets,” it’s better to think of it as a small communications hub.</span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:20px;">The base brings together the traditional telephone connection, Bluetooth connectivity, and the cordless handsets into one system.</span></p><p class="paragraph" style="text-align:left;"><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:20px;">That’s what makes the DS6771-3 particularly interesting from a technical perspective: </span><span style="font-family:Courier,&quot;Lucida Typewriter&quot;,monospace;font-size:20px;"><b>multiple completely different wireless and wired technologies working together inside one phone system.</b></span></p></div><div class='beehiiv__footer'><br class='beehiiv__footer__break'><hr class='beehiiv__footer__line'><a target="_blank" class="beehiiv__footer_link" style="text-align: center;" href="https://www.beehiiv.com/?utm_campaign=d446c9fc-2c70-4e29-91be-ea074d39588a&utm_medium=post_rss&utm_source=mason_aldrich_s_development_blog">Powered by beehiiv</a></div></div>
+  ]]></content:encoded>
+</item>
 
       <item>
   <title>💻 Why Every Developer Needs a Website 🚀</title>
