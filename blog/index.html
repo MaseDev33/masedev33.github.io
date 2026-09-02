@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Read the latest posts from Mason Aldrich's blog and subscribe to the RSS feed." />
+    <title>Blog | Mason Aldrich</title>
+    <link rel="icon" href="../assets/mason.ico" />
+    <link rel="alternate" type="application/rss+xml" title="MaseCodes RSS Feed" href="/rss.xml" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/mobile.css" />
+    <style>
+      .signup-section {
+        margin-bottom: 1rem;
+      }
+
+      .newsletter-float {
+        margin: 0 auto 1.5rem;
+        width: 100%;
+        max-width: 560px;
+        padding: 0;
+        animation: newsletterSlideIn 0.35s ease-out both;
+      }
+
+      .newsletter-float__card {
+        width: 100%;
+        overflow: auto;
+        padding: 1rem 1rem 1.1rem;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 1rem;
+        background: transparent;
+        text-align: center;
+      }
+
+      .newsletter-float__body .beehiiv-embed {
+        margin-top: 0.25rem;
+      }
+
+      @keyframes newsletterSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(18px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .newsletter-float {
+          left: 0.75rem;
+          bottom: 0.75rem;
+          width: min(300px, calc(100vw - 1.5rem));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="../">Mason Aldrich</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          Menu
+        </button>
+        <div class="nav-links" id="site-nav">
+          <a class="nav-link" href="../" data-page="home">Home</a>
+          <a class="nav-link active" href="../blog/" data-page="blog">Blog</a>
+          <a class="nav-link" href="../projects/" data-page="projects">Projects</a>
+          <a class="nav-link" href="../about/" data-page="about">About</a>
+          <a class="nav-link" href="../contact/" data-page="contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page-shell">
+      <section class="page-intro" aria-labelledby="blog-title">
+        <p class="eyebrow">Blog</p>
+        <h1 id="blog-title">Latest updates from my writing</h1>
+        <p>
+          Browse recent posts and subscribe to the RSS feed if you want new articles delivered to your reader.
+        </p>
+        <p>
+          <button class="button button-secondary" id="copy-rss-button" type="button">Copy RSS link</button>
+        </p>
+      </section>
+
+      <section class="content-card" aria-labelledby="blog-posts-title">
+        <div class="signup-section" aria-label="Beehiiv newsletter signup">
+          <h2>Sign up!</h2>
+        </div>
+        <div id="newsletter-float" class="newsletter-float" role="dialog" aria-label="Newsletter signup">
+          <div class="newsletter-float__card">
+            <div class="newsletter-float__body">
+              <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="b146e393-8e58-42e4-b4f3-6f57bf048def"></script>
+            </div>
+          </div>
+        </div>
+        <h2 id="blog-posts-title">Recent posts</h2>
+        <ul class="contact-list" id="blog-posts">
+          <li>Loading posts...</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© 2026 Mason Aldrich</p>
+      <p>Built with HTML, CSS &amp; JavaScript</p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script>
+      const feedUrl = 'https://masecodes.dev/rss.xml';
+      const list = document.getElementById('blog-posts');
+      const copyButton = document.getElementById('copy-rss-button');
+
+      if (copyButton) {
+        copyButton.addEventListener('click', async () => {
+          const rssUrl = 'https://masecodes.dev/rss.xml';
+
+          try {
+            await navigator.clipboard.writeText(rssUrl);
+            const originalText = copyButton.textContent;
+            copyButton.textContent = 'Copied RSS link!';
+            copyButton.disabled = true;
+
+            window.setTimeout(() => {
+              copyButton.textContent = originalText;
+              copyButton.disabled = false;
+            }, 2000);
+          } catch (error) {
+            copyButton.textContent = 'Copy failed';
+            window.setTimeout(() => {
+              copyButton.textContent = 'Copy RSS link';
+            }, 2000);
+          }
+        });
+      }
+
+      fetch(feedUrl, {
+        cache: 'no-store',
+        headers: {
+          Accept: 'application/rss+xml, application/xml, text/xml',
+        },
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Unable to load RSS feed.');
+          }
+          return response.text();
+        })
+        .then((text) => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(text, 'application/xml');
+          const items = Array.from(doc.getElementsByTagName('item'));
+          const entries = items.length ? items : Array.from(doc.getElementsByTagName('entry'));
+
+          if (!entries.length) {
+            list.innerHTML = '<li>No posts are available right now. Check back soon or subscribe to the RSS feed.</li>';
+            return;
+          }
+
+          const getDateValue = (item) => {
+            const rawDate = item.getElementsByTagName('pubDate')[0]?.textContent?.trim() || '';
+            const parsedDate = Date.parse(rawDate);
+            return Number.isNaN(parsedDate) ? 0 : parsedDate;
+          };
+
+          const formatPubDate = (rawDate) => {
+            if (!rawDate) return '';
+            const parsedDate = new Date(rawDate);
+            if (Number.isNaN(parsedDate.getTime())) return rawDate;
+            return parsedDate.toLocaleString([], {
+              dateStyle: 'medium',
+              timeStyle: 'short',
+            });
+          };
+
+          const sortedEntries = [...entries].sort((a, b) => getDateValue(b) - getDateValue(a));
+
+          list.innerHTML = sortedEntries
+            .map((item, index) => {
+              const title = item.getElementsByTagName('title')[0]?.textContent?.trim() || 'Untitled post';
+              const link = item.getElementsByTagName('link')[0]?.textContent?.trim() || '';
+              const descriptionNode = item.getElementsByTagName('description')[0] || item.getElementsByTagName('content:encoded')[0];
+              const description = descriptionNode?.textContent?.trim() || '';
+              const pubDate = item.getElementsByTagName('pubDate')[0]?.textContent?.trim() || '';
+              const formattedPubDate = formatPubDate(pubDate);
+              const cleanedDescription = description
+                .replace(/<[^>]+>/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim()
+                .slice(0, 220);
+
+              return `
+                <li>
+                  ${index > 0 ? '<hr />' : ''}
+                  <strong>${title}</strong>
+                  ${formattedPubDate ? `<p class="meta">${formattedPubDate}</p>` : ''}
+                  ${cleanedDescription ? `<p>${cleanedDescription}${cleanedDescription.length >= 220 ? '…' : ''}</p>` : ''}
+                  ${link ? `<p><a href="${link}" target="_blank" rel="noopener noreferrer">Read more</a></p>` : ''}
+                </li>
+              `;
+            })
+            .join('');
+        })
+        .catch(() => {
+          list.innerHTML = '<li>Unable to load posts right now. Please try again later.</li>';
+        });
+    </script>
+  </body>
+</html>
