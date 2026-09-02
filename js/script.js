@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const loader = document.querySelector('.loading-screen');
+  window.setTimeout(() => loader?.classList.add('is-ready'), 1350);
+
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
-
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('is-open');
@@ -10,23 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const currentPath = window.location.pathname;
-  const links = Array.from(document.querySelectorAll('.nav-link'));
+  document.querySelectorAll('.nav-link').forEach((link) => {
+    const page = link.dataset.page;
+    const isHome = page === 'home' && (currentPath === '/' || currentPath.endsWith('/index.html') && !currentPath.includes('/blog/') && !currentPath.includes('/projects/') && !currentPath.includes('/about/') && !currentPath.includes('/contact/'));
+    const isCurrent = isHome || (page && currentPath.includes(`/${page}/`));
+    link.classList.toggle('active', isCurrent);
+  });
 
-  links.forEach((link) => {
-    const href = link.getAttribute('href') || '';
-    if (href === './' || href === '../') {
-      if (currentPath === '/' || currentPath.endsWith('/index.html') || currentPath === '/website-v2/' || currentPath === '/website-v2/index.html') {
-        link.classList.add('active');
-      }
-      return;
-    }
-
-    if (href.includes('projects') && currentPath.includes('projects')) {
-      link.classList.add('active');
-    } else if (href.includes('about') && currentPath.includes('about')) {
-      link.classList.add('active');
-    } else if (href.includes('contact') && currentPath.includes('contact')) {
-      link.classList.add('active');
-    }
+  document.querySelectorAll('.reveal').forEach((element, index) => {
+    element.style.animationDelay = `${Math.min(index * 90, 450)}ms`;
   });
 });

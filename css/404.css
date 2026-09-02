@@ -1,60 +1,17 @@
-:root {
-  --bg: #000000;
-  --border: #333333;
-  --pink: #ff4da6;
-  --blue: #4da6ff;
-  --text: #ffffff;
-  --muted: #aaaaaa;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: Consolas, "Courier New", Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-}
-
-.error-page {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  padding: 2rem;
-}
-
-.error-code {
-  font-size: 5rem;
-  color: var(--blue);
-  margin: 0;
-}
-
-.error-page h1 {
-  color: var(--pink);
-  margin: 0 0 0.5rem;
-  font-size: 2rem;
-}
-
-.error-page p {
-  color: var(--muted);
-  max-width: 340px;
-}
-
-.button {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--border);
-  color: var(--text);
-  background: var(--blue);
-  color: #000;
-}
-
-.button:hover {
-  background: var(--pink);
-  border-color: var(--pink);
-}
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Space+Grotesk:wght@400;500;700&display=swap');
+:root { --bg: #05070d; --blue: #55b8ff; --cyan: #25f1d0; --text: #edf7ff; --muted: #8fa7b9; }
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; display: grid; place-items: center; color: var(--text); background: var(--bg) radial-gradient(circle at 50% 30%, #102844, var(--bg) 55%); font-family: 'Space Grotesk', sans-serif; }
+.error-page { width: min(600px, calc(100% - 2rem)); padding: 3rem 1rem; text-align: center; }
+.error-code { margin: 0; color: var(--blue); font: 800 clamp(5rem, 20vw, 10rem) 'Orbitron', sans-serif; line-height: 1; text-shadow: 0 0 32px rgba(85, 184, 255, 0.35); }
+.error-page h1 { color: var(--text); font: 700 1.6rem 'Orbitron', sans-serif; }
+.error-page p { color: var(--muted); }
+.button { display: inline-block; padding: 0.75rem 1rem; border: 1px solid var(--blue); color: #000; background: var(--blue); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.button:hover { border-color: var(--cyan); background: var(--cyan); }
+.loading-screen { position: fixed; inset: 0; z-index: 2; display: grid; place-items: center; background: var(--bg); animation: dismiss 1.4s 0.2s forwards; }
+.loader-box { width: min(360px, calc(100vw - 3rem)); }
+.loader-label { color: var(--cyan); font: 0.75rem 'Orbitron', sans-serif; letter-spacing: 0.16em; }
+.loader-track { height: 3px; margin-top: 1rem; background: #101a29; }
+.loader-bar { width: 0; height: 100%; background: var(--blue); animation: load 1.2s ease forwards; }
+@keyframes load { to { width: 100%; } }
+@keyframes dismiss { to { opacity: 0; visibility: hidden; } }
